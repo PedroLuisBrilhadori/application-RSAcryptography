@@ -32,10 +32,10 @@ export default function Header() {
               <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                 Inicio
               </a>
-              <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a href="/encrypt" className="text-base font-medium text-gray-500 hover:text-gray-900">
                 Criptografar
               </a>
-              <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a href="/decrypt" className="text-base font-medium text-gray-500 hover:text-gray-900">
                 Descriptografar
               </a>
 
@@ -71,17 +71,17 @@ export default function Header() {
               </div>
               <div className="space-y-6 py-6 px-5">
                 <div className="grid grid-cols-1 gap-y-4 gap-x-8">
-                  <a href='/' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                  <a href='#' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
                     <HomeIcon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
                     <span className="ml-3 text-base font-medium">Inicio</span>
                   </a>
 
-                  <a href='/' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                  <a href='/encrypt' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
                     <LockClosedIcon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
                     <span className="ml-3 text-base font-medium">Criptografar</span>
                   </a>
 
-                  <a href='/' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                  <a href='/decrypt' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
                     <LockOpenIcon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
                     <span className="ml-3 text-base font-medium">Descriptografar</span>
                   </a>
