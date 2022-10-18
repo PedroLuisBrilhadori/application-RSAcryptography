@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import DropdownMenu from './components/DropdownMenu'
 
 const Home: NextPage = () => {
   return (
@@ -65,6 +66,7 @@ const Home: NextPage = () => {
           </span>
         </a>
       </footer>
+      <DropdownMenu />
     </div>
   )
 }
