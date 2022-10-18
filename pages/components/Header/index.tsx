@@ -1,7 +1,13 @@
 import React from 'react'
+import DropdownMenu from '../DropdownMenu'
 
-export const NavBar = () => {
+export const Header = () => {
   return (
-    <div>NavBar</div>
+    <header>
+      <h2>Inicio</h2>
+      <h2>Criptografar</h2>
+      <h2>Decriptografar</h2>
+      <DropdownMenu />
+    </header>
   )
 }
