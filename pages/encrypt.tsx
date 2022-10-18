@@ -1,12 +1,13 @@
 import React from 'react'
 import Header from '../components/Header'
+import TextField from '../components/TexField'
 
 export default function Encrypt() {
   return (
     <>
       <Header />
       <section>
-        <div>Encrypt</div>
+        <TextField label='sdfsdf'/>
       </section>
     </>
   )
