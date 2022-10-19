@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import TextField from '../components/TexField'
+import TextField from '../components/TextField'
 
 export default function Encrypt() {
   return (
