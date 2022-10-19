@@ -10,7 +10,7 @@ export default function Decrypt() {
       <section>
         <TextField label='Informe seu texto aqui' id='textDecrypt' />
         
-        <ResultText result='' id='textResult' />
+        <ResultText result='Resultado:' id='textResult' />
       </section>
     </>
   )

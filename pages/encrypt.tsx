@@ -11,7 +11,7 @@ export default function Encrypt() {
       <section>
         <TextField label='Informe seu texto aqui' id='textEncrypt' />
       
-        <ResultText result='' id='textResult' />
+        <ResultText result='Resultado:' id='textResult' />
       </section>
     </>
   )
