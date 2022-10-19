@@ -7,7 +7,7 @@ export default function Encrypt() {
     <>
       <Header />
       <section>
-        <TextField label='sdfsdf'/>
+        <TextField label='Informe seu texto aqui'/>
       </section>
     </>
   )
