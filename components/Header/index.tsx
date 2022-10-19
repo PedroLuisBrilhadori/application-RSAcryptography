@@ -24,7 +24,7 @@ export default function Header() {
             </div>
             <div className="-my-2 -mr-2 md:hidden">
               <Popover.Button className="inline-flex items-center justify-center rounded-md bg-stone-800 p-2 text-gray-400 hover:bg-gray-100 hover:text-stone-800 focus:outline-none focus:ring-2 focus:ring-inset">
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">Abrir menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
             </div>
@@ -63,7 +63,7 @@ export default function Header() {
                   </div>
                   <div className="-mr-2">
                     <Popover.Button className="inline-flex items-center justify-center rounded-md bg-stone-800 p-2 text-gray-400 hover:bg-gray-100 hover:text-stone-800 focus:outline-none focus:ring-2 focus:ring-inset">
-                      <span className="sr-only">Close menu</span>
+                      <span className="sr-only">Fechar menu</span>
                       <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
                   </div>
