@@ -23,19 +23,19 @@ export default function Header() {
               </a>
             </div>
             <div className="-my-2 -mr-2 md:hidden">
-              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-stone-800 p-2 text-gray-400 hover:bg-gray-100 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset">
+              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-stone-800 p-2 text-gray-400 hover:bg-gray-100 hover:text-stone-800 focus:outline-none focus:ring-2 focus:ring-inset">
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
             </div>
             <Popover.Group as="nav" className="hidden space-x-10 md:flex">
-              <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a href="#" className="text-base font-medium text-gray-500 hover:text-white">
                 Inicio
               </a>
-              <a href="/encrypt" className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a href="/encrypt" className="text-base font-medium text-gray-500 hover:text-white">
                 Criptografar
               </a>
-              <a href="/decrypt" className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a href="/decrypt" className="text-base font-medium text-gray-500 hover:text-white">
                 Descriptografar
               </a>
 
@@ -62,7 +62,7 @@ export default function Header() {
                     />
                   </div>
                   <div className="-mr-2">
-                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-stone-800 p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset">
+                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-stone-800 p-2 text-gray-400 hover:bg-gray-100 hover:text-stone-800 focus:outline-none focus:ring-2 focus:ring-inset">
                       <span className="sr-only">Close menu</span>
                       <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -71,17 +71,17 @@ export default function Header() {
               </div>
               <div className="space-y-6 py-6 px-5">
                 <div className="grid grid-cols-1 gap-y-4 gap-x-8">
-                  <a href='#' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                  <a href='#' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50 hover:text-black">
                     <HomeIcon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
                     <span className="ml-3 text-base font-medium">Inicio</span>
                   </a>
 
-                  <a href='/encrypt' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                  <a href='/encrypt' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50 hover:text-black">
                     <LockClosedIcon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
                     <span className="ml-3 text-base font-medium">Criptografar</span>
                   </a>
 
-                  <a href='/decrypt' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                  <a href='/decrypt' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50 hover:text-black">
                     <LockOpenIcon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
                     <span className="ml-3 text-base font-medium">Descriptografar</span>
                   </a>
