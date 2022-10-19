@@ -4,7 +4,7 @@ import React from 'react'
 interface Props {
     label: string;
     id: string;
-    changeState: React.FormEvent<HTMLInputElement> | undefined;
+    changeState: void;
 }
 
 const TextField: NextPage<Props> = (props) => {
