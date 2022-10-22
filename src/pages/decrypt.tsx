@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import ButtonSubmit from '../components/ButtonSubmit';
 import Header from '../components/Header'
 import ResultText from '../components/ResultText'
-import TextField from '../components/TextField'
 
 export default function Decrypt() {
   const [changeText, setChangeText] = useState('');
