@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import {
   ChevronRightIcon,
   ChevronDownIcon,
+  PlusIcon
 } from '@heroicons/react/24/outline'
 
 const Home: NextPage = () => {
@@ -76,7 +77,7 @@ const Home: NextPage = () => {
 
         {objectsAsk.map((item) => (
 
-          <div key={item.ask}>
+          <div key={item.ask} className='mb-[100px]'>
             <div className='flex'>
               <h3 className='text-xl'>{item.ask}</h3>
 
@@ -106,11 +107,15 @@ const Home: NextPage = () => {
             {item.hasShow == true &&
               <div>
                 <p>{item.answer}</p>
-                <a href={item.link} className='break-words'>{item.link}</a>
+                <br />
+                <a href={item.link} className='break-words'>
+                  <div className='p-[5px] pr-[20px] w-max text-center bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center float-right'>
+                    {<PlusIcon width={50} height={50} className='mr-[10px]' />}
+                    Saiba mais
+                  </div>
+                </a>
               </div>
             }
-
-            <br />
 
           </div>
         ))}
