@@ -69,7 +69,7 @@ const Home: NextPage = () => {
       </Head>
       
       <Header />
-
+      
       <section className='m-[20px]'>
         <h1 className='text-3xl'>Site encriptador e decriptografador</h1>
         <h2 className='text-2xl'>Perguntas frequentes sobre criptografia</h2>
@@ -109,7 +109,7 @@ const Home: NextPage = () => {
                 <p>{item.answer}</p>
                 <br />
                 <a href={item.link} className='break-words'>
-                  <div className='p-[5px] pr-[20px] w-max text-center bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center float-right'>
+                  <div className='p-[5px] pr-[20px] w-max text-center bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center float-right hover:bg-white hover:text-black'>
                     {<PlusIcon width={50} height={50} className='mr-[10px]' />}
                     Saiba mais
                   </div>

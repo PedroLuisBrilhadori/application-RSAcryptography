@@ -2,15 +2,15 @@ import { NextPage } from 'next';
 import React from 'react'
 
 interface Props {
-    text: String;
+    children?: React.ReactNode;
 }
 
 const ButtonSubmit: NextPage<Props> = (props) => {
-    const {text} = props;
-
     return (
-        <div className='items-center w-full text-center'>
-            <button type='submit' className='self-center text-center bg-stone-800 w-11/12 rounded-xl text-white text-lg p-[5px] border-black border-2'>{text}</button>
+        <div className='items-center w-full flex place-content-center'>
+            <button type='submit' className='p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black'>
+                {props.children}
+            </button>
         </div>
     )
 }
