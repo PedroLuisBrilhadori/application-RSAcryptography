@@ -10,7 +10,7 @@ const ResultText: NextPage<Props> = (props) => {
     const {result, id} = props;
     return (
         <div className='m-10 w-auto h-max'>
-            <p className='w-full h-60 rounded-xl bg-white border-2 border-stone-800 text-black pb-[200px] pl-[10px]' id={id}>{result}</p>
+            <p className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px]' id={id}>{result}</p>
         </div>
     )
 }
