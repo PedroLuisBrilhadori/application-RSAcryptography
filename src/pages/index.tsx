@@ -77,7 +77,7 @@ const Home: NextPage = () => {
 
         {objectsAsk.map((item) => (
 
-          <div key={item.ask} className='mb-[100px]'>
+          <div key={item.ask} className='mb-[5px]'>
             <div className='flex'>
               <h3 className='text-xl'>{item.ask}</h3>
 
@@ -105,7 +105,7 @@ const Home: NextPage = () => {
             </div>
             
             {item.hasShow == true &&
-              <div>
+              <div className='mb-[90px]'>
                 <p>{item.answer}</p>
                 <br />
                 <a href={item.link} className='break-words'>
