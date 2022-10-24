@@ -1,5 +1,11 @@
 import bigInt, { BigInteger } from "big-integer";
 
+export interface Keys {
+  e: BigInteger;
+  d: BigInteger;
+  n: BigInteger;
+}
+
 export class MathUtils {
   constructor() {}
 
@@ -17,7 +23,7 @@ export class MathUtils {
   }
 
   /** Função que gera as chaves para encriptar os dados */
-  generate(keySize: number) {
+  generate(keySize: number): Keys {
     const e = bigInt(65537);
     let p: BigInteger;
     let q: BigInteger;
