@@ -3,6 +3,7 @@ import bigInt, { BigInteger } from "big-integer";
 export class MathUtils {
   constructor() {}
 
+  /** Função para gerar números primos aleatórios */
   randomPrime(bits: number): BigInteger {
     const min = bigInt.one.shiftLeft(bits - 1);
     const max = bigInt.one.shiftRight(bits).prev();
@@ -15,6 +16,7 @@ export class MathUtils {
     }
   }
 
+  /** Função que gera as chaves para encriptar os dados */
   generate(keySize: number) {
     const e = bigInt(65537);
     let p: BigInteger;
@@ -41,19 +43,19 @@ export class MathUtils {
     };
   }
 
-  encode(message: string) {
+  /** Função que transforma uma string em um BigInteger */
+  encode(message: string): BigInteger {
     console.log(message);
     const codes = message
       .split("")
       .map((i) => i.charCodeAt(0))
       .join("");
-    console.log(codes);
-    console.log(this.decode(bigInt(codes)));
 
     return bigInt(codes);
   }
 
-  decode(code: BigInteger) {
+  /** Função que transforma um BigInteger em uma string */
+  decode(code: BigInteger): string {
     const codeString = code.toString();
     let decode = "";
 
@@ -71,10 +73,12 @@ export class MathUtils {
     return decode;
   }
 
+  /** Função que criptografa uma menssagem */
   encrypt(message: BigInteger, n: BigInteger, e: BigInteger): BigInteger {
     return bigInt(message).modPow(e, n);
   }
 
+  /** Função que descriptografa uma menssagem */
   decrypt(message: BigInteger, d: BigInteger, n: BigInteger): BigInteger {
     return bigInt(message).modPow(d, n);
   }
