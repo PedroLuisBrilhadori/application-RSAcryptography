@@ -17,7 +17,7 @@ export default function Encrypt() {
     <>
       <Header />
       
-      <form action='/api/' method='post'>
+      <form action={'/api/hello?text=' + changeText} method='post'>
         <div className='m-10 w-auto h-max'>
           <textarea placeholder='Informe seu texto aqui' className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto' id='textEncrypt' onChange={handleOnChange} value={changeText} />
         </div>
