@@ -22,7 +22,10 @@ export default function Encrypt() {
     
       <ResultText result='Resultado:' id='textResult'/>
 
-      <Button text='Criptografar' />
+      <Button>
+        <LockClosedIcon width={50} height={50} className='mr-[10px]' />
+        Criptografar
+      </Button>
     </>
   )
 }

@@ -36,7 +36,10 @@ export default function Decrypt() {
     
       <ResultText result='Resultado:' id='textResult' />
 
-      <Button text='Descriptografar' />
+      <Button>
+        <LockOpenIcon width={50} height={50} className='mr-[10px]' />
+        Descriptografar
+      </Button>
     </>
   )
 }
