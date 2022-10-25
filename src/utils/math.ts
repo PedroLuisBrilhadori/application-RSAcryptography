@@ -1,8 +1,14 @@
 import bigInt, { BigInteger } from "big-integer";
 
+export interface Keys {
+  public: string;
+  private: string;
+}
+
 export class MathUtils {
   constructor() {}
 
+  /** Função para gerar números primos aleatórios */
   randomPrime(bits: number): BigInteger {
     const min = bigInt.one.shiftLeft(bits - 1);
     const max = bigInt.one.shiftRight(bits).prev();
@@ -15,7 +21,8 @@ export class MathUtils {
     }
   }
 
-  generate(keySize: number) {
+  /** Função que gera as chaves para encriptar os dados */
+  generate(keySize: number): Keys {
     const e = bigInt(65537);
     let p: BigInteger;
     let q: BigInteger;
@@ -34,26 +41,28 @@ export class MathUtils {
         .isZero()
     );
 
+    const n = p.multiply(q);
+    const d = e.modInv(totient);
+
     return {
-      e,
-      n: p.multiply(q),
-      d: e.modInv(totient),
+      public: `${e}/${n}`,
+      private: `${d}/${n}`,
     };
   }
 
-  encode(message: string) {
+  /** Função que transforma uma string em um BigInteger */
+  encode(message: string): BigInteger {
     console.log(message);
     const codes = message
       .split("")
       .map((i) => i.charCodeAt(0))
       .join("");
-    console.log(codes);
-    console.log(this.decode(bigInt(codes)));
 
     return bigInt(codes);
   }
 
-  decode(code: BigInteger) {
+  /** Função que transforma um BigInteger em uma string */
+  decode(code: BigInteger): string {
     const codeString = code.toString();
     let decode = "";
 
@@ -71,37 +80,21 @@ export class MathUtils {
     return decode;
   }
 
-  encrypt(message: BigInteger, n: BigInteger, e: BigInteger): BigInteger {
+  /** Função que criptografa uma menssagem */
+  encrypt(message: BigInteger, publicKey: string): BigInteger {
+    const e = bigInt(publicKey.split("/")[0]);
+    const n = bigInt(publicKey.split("/")[1]);
     return bigInt(message).modPow(e, n);
   }
 
-  decrypt(message: BigInteger, d: BigInteger, n: BigInteger): BigInteger {
+  /** Função que descriptografa uma menssagem */
+  decrypt(message: BigInteger, privateKey: string): BigInteger {
+    const d = bigInt(privateKey.split("/")[0]);
+    const n = bigInt(privateKey.split("/")[1]);
+
     return bigInt(message).modPow(d, n);
   }
 }
 const math = new MathUtils();
 
 export default math;
-
-// TESTES PARA A CLASSE MATHUTILS
-
-// const message = 'Hello, World!';
-
-// const keys = math.generate(250);
-
-// console.log('Keys');
-// console.log('n:', keys.n.toString());
-// console.log('d:', keys.d.toString());
-// console.log('e:', keys.e.toString());
-
-// const encoded_message = math.encode(message);
-// const encrypted_message = math.encrypt(encoded_message, keys.n, keys.e);
-// const decrypted_message = math.decrypt(encrypted_message, keys.d, keys.n);
-// const decoded_message = math.decode(decrypted_message);
-
-// console.log('Message:', message);
-// console.log('Encoded:', encoded_message.toString());
-// console.log('Encrypted:', encrypted_message.toString());
-// console.log('Decrypted:', decrypted_message.toString());
-// console.log('Decoded:', decoded_message.toString());
-// console.log('Correct?', message === decoded_message);
