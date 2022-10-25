@@ -2,6 +2,9 @@ import React, {useState} from 'react'
 import Button from '../components/Button';
 import Header from '../components/Header'
 import ResultText from '../components/ResultText'
+import {
+  LockClosedIcon,
+} from '@heroicons/react/24/outline'
 
 export default function Encrypt() {
   const [changeText, setChangeText] = useState('');

@@ -1,22 +1,100 @@
+import bigInt, { BigInteger } from "big-integer";
+
+export interface Keys {
+  public: string;
+  private: string;
+}
+
 export class MathUtils {
   constructor() {}
 
-  mdc(num1: number, num2: number): number {
-    if (num1 == 0) return num2;
+  /** Função para gerar números primos aleatórios */
+  randomPrime(bits: number): BigInteger {
+    const min = bigInt.one.shiftLeft(bits - 1);
+    const max = bigInt.one.shiftRight(bits).prev();
 
-    return this.mdc(num1 % num2, num1);
+    while (true) {
+      let p = bigInt.randBetween(min, max);
+      if (p.isProbablePrime(256)) {
+        return p;
+      }
+    }
   }
 
-  euler(num: number): number {
-    let result = 0;
+  /** Função que gera as chaves para encriptar os dados */
+  generate(keySize: number): Keys {
+    const e = bigInt(65537);
+    let p: BigInteger;
+    let q: BigInteger;
+    let totient;
 
-    for (let i = 2; i < num; i++) {
-      if (this.mdc(i, num) == 1) result++;
+    do {
+      p = this.randomPrime(keySize / 2);
+      q = this.randomPrime(keySize / 2);
+      totient = bigInt.lcm(p.prev(), q.prev());
+    } while (
+      bigInt.gcd(e, totient).notEquals(1) ||
+      p
+        .minus(q)
+        .abs()
+        .shiftRight(keySize / 2 - 100)
+        .isZero()
+    );
+
+    const n = p.multiply(q);
+    const d = e.modInv(totient);
+
+    return {
+      public: `${e}/${n}`,
+      private: `${d}/${n}`,
+    };
+  }
+
+  /** Função que transforma uma string em um BigInteger */
+  encode(message: string): BigInteger {
+    console.log(message);
+    const codes = message
+      .split("")
+      .map((i) => i.charCodeAt(0))
+      .join("");
+
+    return bigInt(codes);
+  }
+
+  /** Função que transforma um BigInteger em uma string */
+  decode(code: BigInteger): string {
+    const codeString = code.toString();
+    let decode = "";
+
+    for (let i = 0; i < codeString.length; i += 2) {
+      let num = Number(codeString.substr(i, 2));
+
+      if (num <= 30) {
+        decode += String.fromCharCode(Number(codeString.substr(i, 3)));
+        i++;
+      } else {
+        decode += String.fromCharCode(num);
+      }
     }
-    return result;
+
+    return decode;
+  }
+
+  /** Função que criptografa uma menssagem */
+  encrypt(message: BigInteger, publicKey: string): BigInteger {
+    const e = bigInt(publicKey.split("/")[0]);
+    const n = bigInt(publicKey.split("/")[1]);
+    return bigInt(message).modPow(e, n);
+  }
+
+  /** Função que descriptografa uma menssagem */
+  decrypt(message: BigInteger, privateKey: string): BigInteger {
+    const d = bigInt(privateKey.split("/")[0]);
+    const n = bigInt(privateKey.split("/")[1]);
+
+    return bigInt(message).modPow(d, n);
   }
 }
-
 const math = new MathUtils();
 
 export default math;

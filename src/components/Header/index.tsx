@@ -16,7 +16,7 @@ export default function Header() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center justify-between border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
-              <a href="#">
+              <a href="/">
                 <LockClosedIcon
                   className="h-8 w-auto sm:h-10 text-white"
                 />
@@ -29,7 +29,7 @@ export default function Header() {
               </Popover.Button>
             </div>
             <Popover.Group as="nav" className="hidden space-x-10 md:flex">
-              <a href="#" className="text-base font-medium text-gray-500 hover:text-white">
+              <a href="/" className="text-base font-medium text-gray-500 hover:text-white">
                 Inicio
               </a>
               <a href="/encrypt" className="text-base font-medium text-gray-500 hover:text-white">
@@ -71,7 +71,7 @@ export default function Header() {
               </div>
               <div className="space-y-6 py-6 px-5">
                 <div className="grid grid-cols-1 gap-y-4 gap-x-8">
-                  <a href='#' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50 hover:text-black">
+                  <a href='/' className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50 hover:text-black">
                     <HomeIcon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
                     <span className="ml-3 text-base font-medium">Inicio</span>
                   </a>
