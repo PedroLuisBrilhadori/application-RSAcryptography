@@ -2,7 +2,6 @@ import { ClipboardDocumentIcon, KeyIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react'
 import Button from '../components/Button';
 import Header from '../components/Header'
-import ResultText from '../components/ResultText'
 
 export default function GenerateKeys() {
   const [keyPrivateText, setKeyPrivateText] = useState('Chave privada');
