@@ -2,10 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 import math from "../../utils/math";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const {
-    method,
-    body: { message, publicKey },
-  } = req;
+  const { method } = req;
+
+  const { message, publicKey } = JSON.parse(req.body);
 
   switch (method) {
     case `POST`:
@@ -15,7 +14,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
         res.status(200).json({
           success: true,
-          message: encrypted_message,
+          data: {
+            message: encrypted_message,
+          },
         });
       } catch (error) {
         res.status(400).json({
