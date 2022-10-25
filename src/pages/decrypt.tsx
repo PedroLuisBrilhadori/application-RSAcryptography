@@ -1,12 +1,12 @@
-import { LockOpenIcon } from '@heroicons/react/24/outline';
+import { ClipboardDocumentIcon, LockOpenIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react'
 import Button from '../components/Button';
 import Header from '../components/Header'
-import ResultText from '../components/ResultText'
 
 export default function Decrypt() {
   const [changeText, setChangeText] = useState('');
   const [changeKeyPrivateText, setChangeKeyPrivateText] = useState('');
+  const [result, setResult] = useState('Resultado:');
 
   function handleOnChangeText(e: any){    
     setChangeText(e.target.value);
@@ -14,6 +14,10 @@ export default function Decrypt() {
 
   function handleOnChangeKeyPrivate(e: any){    
     setChangeKeyPrivateText(e.target.value);
+  }
+
+  function handleOnDoubleClick(e: any){    
+    navigator.clipboard.writeText(result)
   }
 
   return (
@@ -24,7 +28,10 @@ export default function Decrypt() {
         <input placeholder='Chave assincrona (privada) criptografada' className='w-full h-[30px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto' onChange={handleOnChangeKeyPrivate} value={changeKeyPrivateText} />
       </div>
     
-      <ResultText result='Resultado:' id='textResult' />
+      <div className='m-10 w-auto h-max flex'>
+        <p className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px]' onDoubleClick={handleOnDoubleClick}>{result}</p>
+        <ClipboardDocumentIcon className='w-[30px] h-[30px] ml-[5px] cursor-pointer' onClick={handleOnDoubleClick} />
+      </div>
 
       <Button>
         <LockOpenIcon width={50} height={50} className='mr-[10px]' />
