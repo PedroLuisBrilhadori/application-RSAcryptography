@@ -1,9 +1,8 @@
 import bigInt, { BigInteger } from "big-integer";
 
 export interface Keys {
-  e: BigInteger;
-  d: BigInteger;
-  n: BigInteger;
+  public: string;
+  private: string;
 }
 
 export class MathUtils {
@@ -42,10 +41,12 @@ export class MathUtils {
         .isZero()
     );
 
+    const n = p.multiply(q);
+    const d = e.modInv(totient);
+
     return {
-      e,
-      n: p.multiply(q),
-      d: e.modInv(totient),
+      public: `${e}/${n}`,
+      private: `${d}/${n}`,
     };
   }
 
@@ -80,38 +81,20 @@ export class MathUtils {
   }
 
   /** Função que criptografa uma menssagem */
-  encrypt(message: BigInteger, n: BigInteger, e: BigInteger): BigInteger {
+  encrypt(message: BigInteger, publicKey: string): BigInteger {
+    const e = bigInt(publicKey.split("/")[0]);
+    const n = bigInt(publicKey.split("/")[1]);
     return bigInt(message).modPow(e, n);
   }
 
   /** Função que descriptografa uma menssagem */
-  decrypt(message: BigInteger, d: BigInteger, n: BigInteger): BigInteger {
+  decrypt(message: BigInteger, privateKey: string): BigInteger {
+    const d = bigInt(privateKey.split("/")[0]);
+    const n = bigInt(privateKey.split("/")[1]);
+
     return bigInt(message).modPow(d, n);
   }
 }
 const math = new MathUtils();
 
 export default math;
-
-// TESTES PARA A CLASSE MATHUTILS
-
-// const message = 'Hello, World!';
-
-// const keys = math.generate(250);
-
-// console.log('Keys');
-// console.log('n:', keys.n.toString());
-// console.log('d:', keys.d.toString());
-// console.log('e:', keys.e.toString());
-
-// const encoded_message = math.encode(message);
-// const encrypted_message = math.encrypt(encoded_message, keys.n, keys.e);
-// const decrypted_message = math.decrypt(encrypted_message, keys.d, keys.n);
-// const decoded_message = math.decode(decrypted_message);
-
-// console.log('Message:', message);
-// console.log('Encoded:', encoded_message.toString());
-// console.log('Encrypted:', encrypted_message.toString());
-// console.log('Decrypted:', decrypted_message.toString());
-// console.log('Decoded:', decoded_message.toString());
-// console.log('Correct?', message === decoded_message);
