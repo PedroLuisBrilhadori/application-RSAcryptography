@@ -2,10 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import math from "../../utils/math";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const {
-    method,
-    body: { keysize },
-  } = req;
+  const { method } = req;
+  const keysize = JSON.parse(req.body)["keysize"];
 
   switch (method) {
     case `POST`:
@@ -16,7 +14,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         });
       } catch (error) {
         res.status(400).json({
-          message: `Invald key size.`,
+          message: `Invald key size. ${error}`,
           success: false,
         });
       }
