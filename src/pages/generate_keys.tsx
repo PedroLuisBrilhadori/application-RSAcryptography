@@ -19,13 +19,13 @@ export default function GenerateKeys() {
     <>
       <Header />
     
-      <div className='m-10 w-auto h-max flex'>
-          <p className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px]' onDoubleClick={handleOnDoubleClickKeyPublic}>{keyPublicText}</p>
+      <div className='m-10 w-auto h-max flex border-2 border-stone-800 rounded-xl'>
+          <p className='w-full h-[150px] bg-white text-black pl-[10px] rounded-xl' onDoubleClick={handleOnDoubleClickKeyPublic}>{keyPublicText}</p>
           <ClipboardDocumentIcon className='w-[30px] h-[30px] ml-[5px] cursor-pointer' onClick={handleOnDoubleClickKeyPublic} />
       </div>
 
-      <div className='m-10 w-auto h-max flex'>
-          <p className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px]' onDoubleClick={handleOnDoubleClickKeyPrivate}>{keyPrivateText}</p>
+      <div className='m-10 w-auto h-max flex border-2 border-stone-800 rounded-xl'>
+          <p className='w-full h-[150px] bg-white text-black pl-[10px] rounded-xl' onDoubleClick={handleOnDoubleClickKeyPrivate}>{keyPrivateText}</p>
           <ClipboardDocumentIcon className='w-[30px] h-[30px] ml-[5px] cursor-pointer' onClick={handleOnDoubleClickKeyPrivate} />
       </div>
 
