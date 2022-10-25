@@ -17,7 +17,7 @@ export default function Encrypt() {
         <textarea placeholder='Texto' className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto' id='textEncrypt' onChange={handleOnChange} value={changeText} />
       </div>
     
-      <ResultText result='Resultado:' id='textResult' />
+      <ResultText result='Resultado:' id='textResult'/>
 
       <Button text='Criptografar' />
     </>
