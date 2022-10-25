@@ -13,16 +13,13 @@ export default function Encrypt() {
   return (
     <>
       <Header />
-      
-      <form action='/api/' method='post'>
-        <div className='m-10 w-auto h-max'>
-          <textarea placeholder='Texto' className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto' id='textEncrypt' onChange={handleOnChange} value={changeText} />
-        </div>
-      
-        <ResultText result='Resultado:' id='textResult' />
+      <div className='m-10 w-auto h-max'>
+        <textarea placeholder='Texto' className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto' id='textEncrypt' onChange={handleOnChange} value={changeText} />
+      </div>
+    
+      <ResultText result='Resultado:' id='textResult' />
 
-        <Button text='Criptografar' />
-      </form>
+      <Button text='Criptografar' />
     </>
   )
 }

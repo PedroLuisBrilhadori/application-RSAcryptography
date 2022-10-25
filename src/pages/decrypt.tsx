@@ -23,19 +23,19 @@ export default function Decrypt() {
   return (
     <>
       <Header />
-        <div className='mx-10 mt-10 w-auto h-max'>
-          <textarea placeholder='Mensagem criptografada' className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto' id='textDecrypt' onChange={handleOnChangeText} value={changeText} />
-        </div>
+      <div className='mx-10 mt-10 w-auto h-max'>
+        <textarea placeholder='Mensagem criptografada' className='w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto' id='textDecrypt' onChange={handleOnChangeText} value={changeText} />
+      </div>
 
-        <div className='mx-10 w-auto h-max flex'>
-          <input type='number' placeholder='Chave sincrona (pública) criptografada' className='w-full h-[30px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto mr-2' id='textDecrypt' onChange={handleOnChangeKeyPublic} value={changeKeyPublicText} />
+      <div className='mx-10 w-auto h-max flex'>
+        <input type='number' placeholder='Chave sincrona (pública) criptografada' className='w-full h-[30px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto mr-2' id='textDecrypt' onChange={handleOnChangeKeyPublic} value={changeKeyPublicText} />
 
-          <input type='number' placeholder='Chave assincrona (privada) criptografada' className='w-full h-[30px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto' id='textDecrypt' onChange={handleOnChangeKeyPrivate} value={changeKeyPrivateText} />
-        </div>
-      
-        <ResultText result='Resultado:' id='textResult' />
+        <input type='number' placeholder='Chave assincrona (privada) criptografada' className='w-full h-[30px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto' id='textDecrypt' onChange={handleOnChangeKeyPrivate} value={changeKeyPrivateText} />
+      </div>
+    
+      <ResultText result='Resultado:' id='textResult' />
 
-        <Button text='Descriptografar' />
+      <Button text='Descriptografar' />
     </>
   )
 }
