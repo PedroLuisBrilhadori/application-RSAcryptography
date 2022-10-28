@@ -1,4 +1,4 @@
-import { ClipboardDocumentIcon, LockOpenIcon } from '@heroicons/react/24/outline';
+import { ClipboardDocumentIcon, LockOpenIcon, KeyIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react'
 import Button from '../components/Button';
 import Header from '../components/Header'
@@ -33,10 +33,17 @@ export default function Decrypt() {
         <ClipboardDocumentIcon className='w-[30px] h-[30px] ml-[5px] cursor-pointer' onClick={handleOnDoubleClick} />
       </div>
 
-      <Button>
-        <LockOpenIcon width={50} height={50} className='mr-[10px]' />
-        Descriptografar
-      </Button>
+      <div className='flex flex-wrap md:flex-row md:flex-nowrap'>
+        <Button>
+          <LockOpenIcon width={50} height={50} className='mr-[10px]' />
+          Descriptografar
+        </Button>
+
+        <Button>
+          <KeyIcon width={50} height={50} className='mr-[10px]' />
+          Restaurar chave
+        </Button>
+      </div>
     </>
   )
 }
