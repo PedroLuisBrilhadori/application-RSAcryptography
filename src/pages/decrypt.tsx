@@ -41,7 +41,7 @@ export default function Decrypt() {
 
         <Button>
           <KeyIcon width={50} height={50} className='mr-[10px]' />
-          Restaurar chave
+          Preencher chave
         </Button>
       </div>
     </>
