@@ -44,7 +44,7 @@ export default function GenerateKeys() {
           {keys.publicKey}
         </p>
         <ClipboardDocumentIcon
-          className="w-[30px] h-[30px] ml-[5px] cursor-pointer"
+          className="w-[30px] h-[30px] ml-[-30px] cursor-pointer"
           onClick={handleOnDoubleClickKeyPublic}
         />
       </div>
@@ -57,7 +57,7 @@ export default function GenerateKeys() {
           {keys.privateKey}
         </p>
         <ClipboardDocumentIcon
-          className="w-[30px] h-[30px] ml-[5px] cursor-pointer"
+          className="w-[30px] h-[30px] ml-[-30px] cursor-pointer"
           onClick={handleOnDoubleClickKeyPrivate}
         />
       </div>
