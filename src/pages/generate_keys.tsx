@@ -1,6 +1,5 @@
 import { ClipboardDocumentIcon, KeyIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
-import Button from "../components/Button";
 import Header from "../components/Header";
 
 export default function GenerateKeys() {
@@ -28,6 +27,9 @@ export default function GenerateKeys() {
       publicKey: json.data.public,
       privateKey: json.data.private,
     });
+
+    localStorage.setItem("publicKey", json.data.public);
+    localStorage.setItem("privateKey", json.data.private);
   };
 
   return (

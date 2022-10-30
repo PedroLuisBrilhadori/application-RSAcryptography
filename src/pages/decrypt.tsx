@@ -4,12 +4,11 @@ import {
   ClipboardDocumentIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
-import Button from "../components/Button";
 import Header from "../components/Header";
 
 export default function Decrypt() {
   const [changeText, setChangeText] = useState("");
-  const [changeKeyPrivateText, setChangeKeyPrivateText] = useState("");
+  const [privateKey, setPrivateKey] = useState("");
   const [result, setResult] = useState("Resultado:");
 
   function handleOnChangeText(e: any) {
@@ -17,7 +16,7 @@ export default function Decrypt() {
   }
 
   function handleOnChangeKeyPrivate(e: any) {
-    setChangeKeyPrivateText(e.target.value);
+    setPrivateKey(e.target.value);
   }
 
   function handleOnDoubleClick(e: any) {
@@ -29,14 +28,17 @@ export default function Decrypt() {
       method: "POST",
       body: JSON.stringify({
         message: changeText,
-        privateKey: changeKeyPrivateText,
+        privateKey: privateKey,
       }),
     });
 
     const json = await data.json();
-    console.log(json);
 
     setResult(json.data.message);
+  };
+
+  const getKey = async () => {
+    setPrivateKey(localStorage.getItem("privateKey") as string);
   };
 
   return (
@@ -54,7 +56,7 @@ export default function Decrypt() {
           placeholder="Chave assincrona (privada) criptografada"
           className="w-full h-[30px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto"
           onChange={handleOnChangeKeyPrivate}
-          value={changeKeyPrivateText}
+          value={privateKey}
         />
       </div>
 
@@ -72,15 +74,25 @@ export default function Decrypt() {
       </div>
 
       <div className="flex flex-wrap md:flex-row md:flex-nowrap">
-        <Button onClick={getData}>
-          <LockOpenIcon width={50} height={50} className="mr-[10px]" />
-          Descriptografar
-        </Button>
+        <div className="items-center w-full flex place-content-center">
+          <button
+            onClick={getData}
+            className={`p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"`}
+          >
+            <LockOpenIcon width={50} height={50} className="mr-[10px]" />
+            Descriptografar
+          </button>
+        </div>
 
-        <Button onClick={() => {}}>
-          <KeyIcon width={50} height={50} className="mr-[10px]" />
-          Preencher chave
-        </Button>
+        <div className="items-center w-full flex place-content-center">
+          <button
+            onClick={getKey}
+            className={`p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"`}
+          >
+            <KeyIcon width={50} height={50} className="mr-[10px]" />
+            Preencher chave
+          </button>
+        </div>
       </div>
     </>
   );

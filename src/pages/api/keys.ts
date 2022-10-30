@@ -3,10 +3,11 @@ import math from "../../utils/math";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
-  const keysize = JSON.parse(req.body)["keysize"];
 
   switch (method) {
     case `POST`:
+      const keysize = JSON.parse(req.body)["keysize"];
+
       try {
         res.status(200).json({
           success: true,

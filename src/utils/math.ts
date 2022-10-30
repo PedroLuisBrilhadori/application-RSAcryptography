@@ -39,7 +39,6 @@ export class MathUtils {
 
   /** Função que transforma uma string em um BigInteger */
   encode(message: string): BigInteger {
-    console.log(message);
     const codes = message
       .split("")
       .map((i) => i.charCodeAt(0))
@@ -76,7 +75,6 @@ export class MathUtils {
 
   /** Função que descriptografa uma menssagem */
   decrypt(message: BigInteger, privateKey: string): BigInteger {
-    console.log(privateKey);
     const d = bigInt(privateKey.split("/")[0]);
     const n = bigInt(privateKey.split("/")[1]);
 
