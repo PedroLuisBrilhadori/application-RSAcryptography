@@ -62,7 +62,7 @@ export default function GenerateKeys() {
         />
       </div>
 
-      <div className="items-center w-full flex place-content-center">
+      <div className="items-center w-full flex place-content-center mb-[10px]">
         <button
           onClick={getData}
           type="submit"

@@ -73,8 +73,8 @@ export default function Encrypt() {
         />
       </div>
 
-      <div className="items-center w-full flex place-content-center">
-        <div className="items-center w-full flex place-content-center">
+      <div className="flex flex-wrap md:flex-row md:flex-nowrap">
+        <div className="items-center w-full flex place-content-center mb-[10px]">
           <button
             onClick={getData}
             className={`p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"`}
@@ -84,7 +84,7 @@ export default function Encrypt() {
           </button>
         </div>
 
-        <div className="items-center w-full flex place-content-center">
+        <div className="items-center w-full flex place-content-center mb-[10px]">
           <button
             onClick={getKey}
             className={`p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"`}
