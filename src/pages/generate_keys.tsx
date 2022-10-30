@@ -1,38 +1,77 @@
-import { ClipboardDocumentIcon, KeyIcon } from '@heroicons/react/24/outline';
-import React, { useState } from 'react'
-import Button from '../components/Button';
-import Header from '../components/Header'
+import { ClipboardDocumentIcon, KeyIcon } from "@heroicons/react/24/outline";
+import React, { useState } from "react";
+import Header from "../components/Header";
 
 export default function GenerateKeys() {
-  const [keyPrivateText, setKeyPrivateText] = useState('Chave privada');
-  const [keyPublicText, setKeyPublicText] = useState('Chave pública');
+  const [keys, setKeys] = useState({ privateKey: "", publicKey: "" });
 
-  function handleOnDoubleClickKeyPublic(e: any){    
-    navigator.clipboard.writeText(keyPublicText)
+  function handleOnDoubleClickKeyPublic(e: any) {
+    navigator.clipboard.writeText(keys.publicKey);
   }
 
-  function handleOnDoubleClickKeyPrivate(e: any){    
-    navigator.clipboard.writeText(keyPrivateText)
+  function handleOnDoubleClickKeyPrivate(e: any) {
+    navigator.clipboard.writeText(keys.privateKey);
   }
+
+  const getData = async () => {
+    const data = await fetch("/api/keys", {
+      method: "POST",
+      body: JSON.stringify({
+        keysize: 250,
+      }),
+    });
+
+    const json = await data.json();
+
+    setKeys({
+      publicKey: json.data.public,
+      privateKey: json.data.private,
+    });
+
+    localStorage.setItem("publicKey", json.data.public);
+    localStorage.setItem("privateKey", json.data.private);
+  };
 
   return (
     <>
       <Header />
-    
-      <div className='m-10 w-auto h-max flex border-2 border-stone-800 rounded-xl'>
-          <p className='w-full h-[150px] bg-white text-black pl-[10px] rounded-xl' onDoubleClick={handleOnDoubleClickKeyPublic}>{keyPublicText}</p>
-          <ClipboardDocumentIcon className='w-[30px] h-[30px] ml-[5px] cursor-pointer' onClick={handleOnDoubleClickKeyPublic} />
+
+      <div className="m-10 w-auto h-max flex border-2 border-stone-800 rounded-xl">
+        <p
+          className="w-full h-[150px] bg-white text-black pl-[10px] rounded-xl break-words pr-[30px]"
+          onDoubleClick={handleOnDoubleClickKeyPublic}
+        >
+          {keys.publicKey}
+        </p>
+        <ClipboardDocumentIcon
+          className="w-[30px] h-[30px] ml-[-30px] cursor-pointer"
+          onClick={handleOnDoubleClickKeyPublic}
+        />
       </div>
 
-      <div className='m-10 w-auto h-max flex border-2 border-stone-800 rounded-xl'>
-          <p className='w-full h-[150px] bg-white text-black pl-[10px] rounded-xl' onDoubleClick={handleOnDoubleClickKeyPrivate}>{keyPrivateText}</p>
-          <ClipboardDocumentIcon className='w-[30px] h-[30px] ml-[5px] cursor-pointer' onClick={handleOnDoubleClickKeyPrivate} />
+      <div className="m-10 w-auto h-max flex border-2 border-stone-800 rounded-xl">
+        <p
+          className="w-full h-[150px] bg-white text-black pl-[10px] rounded-xl break-words pr-[30px]"
+          onDoubleClick={handleOnDoubleClickKeyPrivate}
+        >
+          {keys.privateKey}
+        </p>
+        <ClipboardDocumentIcon
+          className="w-[30px] h-[30px] ml-[-30px] cursor-pointer"
+          onClick={handleOnDoubleClickKeyPrivate}
+        />
       </div>
 
-      <Button>
-        <KeyIcon width={50} height={50} className='mr-[10px]' />
-        Gerar
-      </Button>
+      <div className="items-center w-full flex place-content-center mb-[10px]">
+        <button
+          onClick={getData}
+          type="submit"
+          className="p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"
+        >
+          <KeyIcon width={50} height={50} className="mr-[10px]" />
+          Gerar
+        </button>
+      </div>
     </>
-  )
+  );
 }

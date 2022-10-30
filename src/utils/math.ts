@@ -23,23 +23,10 @@ export class MathUtils {
 
   /** Função que gera as chaves para encriptar os dados */
   generate(keySize: number): Keys {
-    const e = bigInt(65537);
-    let p: BigInteger;
-    let q: BigInteger;
-    let totient;
-
-    do {
-      p = this.randomPrime(keySize / 2);
-      q = this.randomPrime(keySize / 2);
-      totient = bigInt.lcm(p.prev(), q.prev());
-    } while (
-      bigInt.gcd(e, totient).notEquals(1) ||
-      p
-        .minus(q)
-        .abs()
-        .shiftRight(keySize / 2 - 100)
-        .isZero()
-    );
+    const e = this.randomPrime(20);
+    const p = this.randomPrime(keySize / 2);
+    const q = this.randomPrime(keySize / 2);
+    const totient = bigInt.lcm(p.prev(), q.prev());
 
     const n = p.multiply(q);
     const d = e.modInv(totient);
@@ -52,7 +39,6 @@ export class MathUtils {
 
   /** Função que transforma uma string em um BigInteger */
   encode(message: string): BigInteger {
-    console.log(message);
     const codes = message
       .split("")
       .map((i) => i.charCodeAt(0))
@@ -89,6 +75,7 @@ export class MathUtils {
 
   /** Função que descriptografa uma menssagem */
   decrypt(message: BigInteger, privateKey: string): BigInteger {
+    console.log(privateKey);
     const d = bigInt(privateKey.split("/")[0]);
     const n = bigInt(privateKey.split("/")[1]);
 
