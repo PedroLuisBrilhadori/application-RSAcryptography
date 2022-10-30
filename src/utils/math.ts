@@ -75,6 +75,7 @@ export class MathUtils {
 
   /** Função que descriptografa uma menssagem */
   decrypt(message: BigInteger, privateKey: string): BigInteger {
+    console.log(privateKey);
     const d = bigInt(privateKey.split("/")[0]);
     const n = bigInt(privateKey.split("/")[1]);
 
