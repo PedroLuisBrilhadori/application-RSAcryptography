@@ -47,7 +47,7 @@ export default function Decrypt() {
       <div className="mx-10 mt-10 w-auto h-max">
         <textarea
           placeholder="Mensagem criptografada"
-          className="w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto break-normal"
+          className="w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto break-word"
           id="textDecrypt"
           onChange={handleOnChangeText}
           value={changeText}
