@@ -6,22 +6,22 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   switch (method) {
     case `POST`:
-      const keysize = JSON.parse(req.body)["keysize"];
+      let keysize = req.body?.keysize ?? JSON.parse(req.body)["keysize"];
 
       try {
-        res.status(200).json({
+        return res.status(200).json({
           success: true,
           data: math.generate(keysize),
         });
       } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
           message: `Invald key size. ${error}`,
           success: false,
         });
       }
 
     default:
-      res.status(405).json({
+      return res.status(405).json({
         message: `method ${method} not allowed.`,
         success: false,
       });
