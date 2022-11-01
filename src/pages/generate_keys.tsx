@@ -1,9 +1,11 @@
 import { ClipboardDocumentIcon, KeyIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import Header from "../components/Header";
+import Loading from "../components/loading";
 
 export default function GenerateKeys() {
   const [keys, setKeys] = useState({ privateKey: "", publicKey: "" });
+  const [isLoading, setLoading] = useState(false);
 
   function handleOnDoubleClickKeyPublic(e: any) {
     navigator.clipboard.writeText(keys.publicKey);
@@ -14,14 +16,15 @@ export default function GenerateKeys() {
   }
 
   const getData = async () => {
+    setLoading(true);
     const data = await fetch("/api/keys", {
       method: "POST",
       body: JSON.stringify({
         keysize: 250,
       }),
     });
-
     const json = await data.json();
+    setLoading(false);
 
     setKeys({
       publicKey: json.data.public,
@@ -64,12 +67,21 @@ export default function GenerateKeys() {
 
       <div className="items-center w-full flex place-content-center mb-[10px]">
         <button
-          onClick={getData}
+          onClick={isLoading ? () => {} : getData}
           type="submit"
-          className="p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"
+          className="p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 hover:bg-white hover:text-black"
         >
-          <KeyIcon width={50} height={50} className="mr-[10px]" />
-          Gerar
+          {isLoading ? (
+            <div>
+              <Loading />
+              Carregando...
+            </div>
+          ) : (
+            <div className="flex items-center place-content-center">
+              <KeyIcon width={50} height={50} className="mr-[10px]" />
+              Gerar
+            </div>
+          )}
         </button>
       </div>
     </>
