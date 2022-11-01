@@ -36,6 +36,13 @@ export default function GenerateKeys() {
     localStorage.setItem("privateKey", json.data.private);
   };
 
+  const getKey = async () => {
+    setKeys({
+      publicKey: localStorage.getItem("publicKey") as string,
+      privateKey: localStorage.getItem("privateKey") as string,
+    });
+  };
+
   return (
     <>
       <Header />
@@ -80,24 +87,39 @@ export default function GenerateKeys() {
         />
       </div>
 
-      <div className="items-center w-full flex place-content-center mb-[10px]">
-        <button
-          onClick={isLoading ? () => {} : getData}
-          type="submit"
-          className="p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 hover:bg-white hover:text-black"
-        >
-          {isLoading ? (
-            <div>
-              <Loading />
-              Gerando Chave...
-            </div>
-          ) : (
+      <div className="flex flex-wrap md:flex-row md:flex-nowrap">
+        <div className="items-center w-full flex place-content-center mb-[10px]">
+          <button
+            onClick={isLoading ? () => {} : getData}
+            type="submit"
+            className="p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"
+          >
+            {isLoading ? (
+              <div>
+                <Loading />
+                Gerando Chave...
+              </div>
+            ) : (
+              <div className="flex items-center place-content-center">
+                <KeyIcon width={50} height={50} className="mr-[10px]" />
+                Gerar
+              </div>
+            )}
+          </button>
+        </div>
+
+        <div className="items-center w-full flex place-content-center mb-[10px]">
+          <button
+            onClick={getKey}
+            type="submit"
+            className="p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"
+          >
             <div className="flex items-center place-content-center">
               <KeyIcon width={50} height={50} className="mr-[10px]" />
-              Gerar
+              Recuperar ultima chave
             </div>
-          )}
-        </button>
+          </button>
+        </div>
       </div>
     </>
   );
