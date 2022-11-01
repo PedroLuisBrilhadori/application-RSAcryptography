@@ -47,7 +47,7 @@ export default function Encrypt() {
       <div className="m-10 w-auto h-max">
         <textarea
           placeholder="Texto"
-          className="w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto"
+          className="w-full h-[150px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto break-normal"
           id="textEncrypt"
           onChange={handleOnChange}
           value={message}
@@ -60,9 +60,9 @@ export default function Encrypt() {
         />
       </div>
 
-      <div className="m-10 w-auto h-max flex border-2 border-stone-800 rounded-xl">
+      <div className="mx-10 mt-5 mb-10 w-auto h-max flex items-center border-2 border-stone-800 rounded-xl">
         <p
-          className="w-full h-[150px] bg-white text-black pl-[10px] rounded-xl"
+          className="w-full max-h-max bg-white text-black pl-[10px] rounded-xl break-words pr-[40px] p-[10px]"
           onDoubleClick={handleOnDoubleClick}
         >
           {result}
@@ -77,7 +77,8 @@ export default function Encrypt() {
         <div className="items-center w-full flex place-content-center mb-[10px]">
           <button
             onClick={getData}
-            className={`p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"`}
+            type="submit"
+            className="p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"
           >
             <LockClosedIcon width={50} height={50} className="mr-[10px]" />
             Criptografar{" "}
@@ -87,7 +88,8 @@ export default function Encrypt() {
         <div className="items-center w-full flex place-content-center mb-[10px]">
           <button
             onClick={getKey}
-            className={`p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"`}
+            type="submit"
+            className="p-[10px] w-11/12 bg-stone-800 rounded-xl text-white text-lg border-black border-2 flex items-center place-content-center hover:bg-white hover:text-black"
           >
             <KeyIcon width={50} height={50} className="mr-[10px]" />
             Preencher chave
