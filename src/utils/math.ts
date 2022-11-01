@@ -23,13 +23,19 @@ export class MathUtils {
 
   /** Função que gera as chaves para encriptar os dados */
   generate(keySize: number): Keys {
-    const e = this.randomPrime(20);
+    const d = this.randomPrime(20);
     const p = this.randomPrime(keySize / 2);
     const q = this.randomPrime(keySize / 2);
     const totient = bigInt.lcm(p.prev(), q.prev());
 
     const n = p.multiply(q);
-    const d = e.modInv(totient);
+    const e = d.modInv(totient);
+
+    console.log({
+      p,
+      q,
+      d,
+    });
 
     return {
       public: `${e}/${n}`,
@@ -43,6 +49,10 @@ export class MathUtils {
       .split("")
       .map((i) => i.charCodeAt(0))
       .join("");
+
+    console.log({
+      encode: codes,
+    });
 
     return bigInt(codes);
   }
@@ -62,6 +72,10 @@ export class MathUtils {
         decode += String.fromCharCode(num);
       }
     }
+
+    console.log({
+      decode,
+    });
 
     return decode;
   }
