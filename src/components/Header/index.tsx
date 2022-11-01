@@ -6,9 +6,6 @@ import {
   Bars3Icon,
   XMarkIcon,
   LockClosedIcon,
-  LockOpenIcon,
-  HomeIcon,
-  KeyIcon,
 } from "@heroicons/react/24/outline";
 
 export default function Header() {
@@ -94,50 +91,28 @@ export default function Header() {
                     href="/"
                     className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50 hover:text-black"
                   >
-                    <HomeIcon
-                      className="h-6 w-6 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span className="ml-3 text-base font-medium">Inicio</span>
+                    Inicio
                   </Link>
 
                   <Link
                     href="/generate_keys"
                     className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50 hover:text-black"
                   >
-                    <KeyIcon
-                      className="h-6 w-6 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span className="ml-3 text-base font-medium">
-                      Gerar chave
-                    </span>
+                    Gerar chave
                   </Link>
 
                   <Link
                     href="/encrypt"
                     className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50 hover:text-black"
                   >
-                    <LockClosedIcon
-                      className="h-6 w-6 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span className="ml-3 text-base font-medium">
-                      Criptografar
-                    </span>
+                    Criptografar
                   </Link>
 
                   <Link
                     href="/decrypt"
                     className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50 hover:text-black"
                   >
-                    <LockOpenIcon
-                      className="h-6 w-6 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span className="ml-3 text-base font-medium">
-                      Descriptografar
-                    </span>
+                    Descriptografar
                   </Link>
                 </div>
               </div>
