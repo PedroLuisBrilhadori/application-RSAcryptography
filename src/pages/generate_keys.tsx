@@ -5,6 +5,7 @@ import Loading from "../components/loading";
 
 export default function GenerateKeys() {
   const [keys, setKeys] = useState({ privateKey: "", publicKey: "" });
+  const [keySize, setKeySize] = useState(250);
   const [isLoading, setLoading] = useState(false);
 
   function handleOnDoubleClickKeyPublic(e: any) {
@@ -20,7 +21,7 @@ export default function GenerateKeys() {
     const data = await fetch("/api/keys", {
       method: "POST",
       body: JSON.stringify({
-        keysize: 250,
+        keysize: keySize,
       }),
     });
     const json = await data.json();
@@ -38,29 +39,43 @@ export default function GenerateKeys() {
   return (
     <>
       <Header />
+      <div className="mx-10 mt-10 w-auto h-max">
+        Tamanho da chave (em bytes):
+        <select
+          placeholder="Chave assincrona (privada) criptografada"
+          className="w-full h-[30px] rounded-xl bg-white border-2 border-stone-800 text-black pl-[10px] overflow-auto"
+          onChange={(e) => {
+            setKeySize(Number(e.target.value));
+          }}
+        >
+          <option>250</option>
+          <option>1048</option>
+          <option>2048</option>
+        </select>
+      </div>
 
-      <div className="m-10 w-auto h-max flex border-2 border-stone-800 rounded-xl">
+      <div className="mx-10 mt-5 w-auto h-max flex items-center border-2 border-stone-800 rounded-xl">
         <p
-          className="w-full h-[150px] bg-white text-black pl-[10px] rounded-xl break-words pr-[30px]"
+          className="w-full max-h-max bg-white text-black pl-[10px] rounded-xl break-words pr-[40px] p-[10px]"
           onDoubleClick={handleOnDoubleClickKeyPublic}
         >
           {keys.publicKey}
         </p>
         <ClipboardDocumentIcon
-          className="w-[30px] h-[30px] ml-[-30px] cursor-pointer"
+          className="w-[30px] h-[30px] ml-[-40px] cursor-pointer"
           onClick={handleOnDoubleClickKeyPublic}
         />
       </div>
 
-      <div className="m-10 w-auto h-max flex border-2 border-stone-800 rounded-xl">
+      <div className="mx-10 mt-5 mb-10 w-auto h-max flex items-center border-2 border-stone-800 rounded-xl">
         <p
-          className="w-full h-[150px] bg-white text-black pl-[10px] rounded-xl break-words pr-[30px]"
+          className="w-full max-h-max bg-white text-black pl-[10px] rounded-xl break-words pr-[40px] p-[10px]"
           onDoubleClick={handleOnDoubleClickKeyPrivate}
         >
           {keys.privateKey}
         </p>
         <ClipboardDocumentIcon
-          className="w-[30px] h-[30px] ml-[-30px] cursor-pointer"
+          className="w-[30px] h-[30px] ml-[-40px] cursor-pointer"
           onClick={handleOnDoubleClickKeyPrivate}
         />
       </div>
@@ -74,7 +89,7 @@ export default function GenerateKeys() {
           {isLoading ? (
             <div>
               <Loading />
-              Carregando...
+              Gerando Chave...
             </div>
           ) : (
             <div className="flex items-center place-content-center">
